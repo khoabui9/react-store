@@ -10,6 +10,7 @@ class Menu extends Component {
             <React.Fragment>
                 <div className={Style.sideMenu}>
                     <ul className={Style.list}>
+                        <li className={Style.listItem} >View All</li>
                     {
                         categories.map((e, idx) => (
                             <li className={Style.listItem} key={idx}>{e}</li>
