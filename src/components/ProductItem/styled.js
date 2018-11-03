@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 export const Item = styled.li`
    width: 45%;
-   height: 120%;
-   float: left;
    overflow: hidden;
    position: relative;
    margin-right: 5%;
@@ -11,8 +9,9 @@ export const Item = styled.li`
 
    @media (max-width: 700px) {
         width: 100vw;
-        height: 80%;
         padding: 2%;
+        margin: 0;
+
     }
 `;
 
