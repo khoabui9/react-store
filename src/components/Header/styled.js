@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 export const Logo = styled.h1`
   font-size: 1.5em;
-  text-align: center;
   padding: 0;
+  left: 4vw;
 `;
 
-export const Cart = styled.h3`
-  font-size: 1.3em;
-  text-align: center;
+export const Cart = styled.h1`
+  font-size: .9em;
+  font-weight: 400;
+  margin-top: 20px;
   padding: 0;
+  color: grey;
 `;
 

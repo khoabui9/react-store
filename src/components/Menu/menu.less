@@ -1,17 +1,27 @@
 .sideMenu {
     width: 25vw;
-    height: 100%;
     background-color: transparent;
-    position: absolute;
+    position: fixed;
+    transform: translate(10vh,30vh);
 }
 
 .list {
-    margin: 0;
-    padding: 0;
-    transform: translate(10vh,30vh);
     list-style: none;
 }
 
 .listItem {
     font-size: 20px;
+}
+
+@media (max-width: 700px) {
+    .sideMenu {
+        width: 100vw;
+        height: 100vh;
+        transform: translate(0,0);
+    }
+
+    .list {
+        height: 100%;
+        margin-top: 15vh; 
+    }
 }

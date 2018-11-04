@@ -4,6 +4,7 @@ const initialState = {
     products: [],
     categories: [],
     selectedProduct: null,
+    selectedCategory: "View all"
 }
 
 /**
