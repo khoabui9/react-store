@@ -1,10 +1,3 @@
-.sideMenu {
-    width: 25vw;
-    background-color: transparent;
-    position: fixed;
-    transform: translate(10vh,30vh);
-}
-
 .list {
     list-style: none;
 }
@@ -13,15 +6,19 @@
     font-size: 20px;
 }
 
-@media (max-width: 700px) {
-    .sideMenu {
-        width: 100vw;
-        height: 100vh;
-        transform: translate(0,0);
-    }
+.active {
+    font-weight: bold;
+}
 
+@media (max-width: 700px) {
     .list {
         height: 100%;
         margin-top: 15vh; 
+    }
+}
+
+@media (min-width: 1500px) {
+    .listItem {
+        font-size: calc(25px + 10 * (100vw - 320px) / 1120);
     }
 }

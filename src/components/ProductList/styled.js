@@ -20,6 +20,12 @@ export const SuperText = styled.h1`
     line-height: 2.5rem;
 `;
 
+export const SmallerText = styled(SuperText)`
+    font-weight: 400; 
+    font-size: calc(20px + 30 * (100vw - 320px) / 1120);
+    color: orangered;
+`;
+
 export const ProductListContainer = styled.div`
     width: 75vw;
     right: 0;

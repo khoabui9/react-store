@@ -9,3 +9,9 @@ html, #root {
   font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
   position: relative;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}

@@ -13,6 +13,7 @@
     position: absolute;
     height: 100%;
     left: 4vw;
+    display: flex;
 }
 
 .cart {
@@ -23,7 +24,32 @@
 }
 
 .cartIcon {
-    font-size: 1.3em;
+    font-size: 1.3rem;
     margin-top: 17px;
     margin-left: 10px;
+}
+
+.barsIcon {
+    font-size: calc(25px + 10 * (100vw - 320px) / 1120);
+    margin-top: 23.5px;
+    margin-right: 10px;
+    display: none;
+    color: grey;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .barsIcon {
+        display: block;
+    }
+
+    .cartIcon {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1500px) {
+    .cartIcon {
+        font-size: calc(20px + 10 * (100vw - 320px) / 1120);
+    }
 }

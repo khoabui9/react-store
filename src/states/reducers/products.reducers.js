@@ -4,7 +4,6 @@ const initialState = {
     products: [],
     categories: [],
     selectedProduct: null,
-    selectedCategory: "View all"
 }
 
 /**
@@ -16,14 +15,6 @@ const initialState = {
  */
 export default function Products(state = initialState, action) {
     switch (action.type) {
-        case ProductActionTypes.INIT_REQUEST:
-            return { 
-                ...state
-            };
-        case ProductActionTypes.INIT_COLLECTION_REQUEST:
-            return { 
-                ...state
-            };
         case ProductActionTypes.SET_PRODUCTS:
             console.log(action.data)
             return {

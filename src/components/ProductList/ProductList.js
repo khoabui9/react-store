@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SuperTextContainer, SuperText, ProductListContainer, ProductUl } from "./styled"
+import { SuperTextContainer, SuperText, SmallerText, ProductListContainer, ProductUl } from "./styled"
 import ProductItem from "../ProductItem/ProductItem"
 import { BrowserRouter as Router } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,8 +12,8 @@ class ProductList extends Component {
                 <ProductListContainer>
                     <SuperTextContainer>
                         <SuperText>Minimal furnitures</SuperText>
-                        <SuperText>Just buy it</SuperText>
-                        <SuperText>Please</SuperText>
+                        <SmallerText>Can you buy it</SmallerText>
+                        <SmallerText>Please</SmallerText>
                     </SuperTextContainer>
                     <ProductUl>
                         {
