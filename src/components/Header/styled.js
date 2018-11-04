@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Logo = styled.h1`
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   padding: 0;
   left: 4vw;
 
