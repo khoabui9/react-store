@@ -12,3 +12,14 @@ export function* menuMobileWatcher() {
 function* menuClick() {
     yield put({type: MenuActionTypes.MOBILE_MENU_CLICK})
 }
+
+export function* categoryClickWatcher() {
+    yield takeLatest(MenuActionTypes.CATEGORY_CLICK_REQUEST, categoryClick);
+}
+
+function* categoryClick(action) {
+    let category = action.category
+    console.log(category)
+    yield put({type: MenuActionTypes.CATEGORY_CLICK, category})
+}
+

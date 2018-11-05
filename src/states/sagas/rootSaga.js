@@ -6,13 +6,15 @@ import {
 } from "./products.sagas"
 
 import {
-    menuMobileWatcher
+    menuMobileWatcher,
+    categoryClickWatcher
 } from "./menu.sagas"
 
 export default function* rootSaga() {
     yield all([
         getAllProducts(),
         getCollectionWatcher(),
-        menuMobileWatcher()
+        menuMobileWatcher(),
+        categoryClickWatcher()
       ])
  }

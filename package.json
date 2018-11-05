@@ -9,6 +9,7 @@
     "file-loader": "^1.1.5",
     "firebase": "^5.5.1",
     "path": "^0.12.7",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-pose": "^3.4.0",

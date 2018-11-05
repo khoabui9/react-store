@@ -17,7 +17,7 @@ export const StyledMenu = styled(MobileMenu)`
 export const List = styled.ul`
     list-style: none;
     padding: 0;
-    transform: translate(5vw,50vh);
+    transform: translate(5vw,30vh);
 
      @media (max-width: 700px) {
         transform: translate(5vw,10vh);

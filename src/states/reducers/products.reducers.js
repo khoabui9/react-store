@@ -16,13 +16,11 @@ const initialState = {
 export default function Products(state = initialState, action) {
     switch (action.type) {
         case ProductActionTypes.SET_PRODUCTS:
-            console.log(action.data)
             return {
                 ...state,
                 products: action.data
             }
         case ProductActionTypes.SET_CATEGORY:
-            console.log(action.data)
             return {
                 ...state,
                 categories: action.data

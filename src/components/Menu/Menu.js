@@ -8,36 +8,52 @@ class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isMobile: false //This is where I am having problems
+            isMobile: false,
         };
-    
+
         this.updatePredicate = this.updatePredicate.bind(this);
-      }
-      componentDidMount() {
+        this.onClick = this.onClick.bind(this);
+    }
+
+    componentDidMount() {
         this.updatePredicate();
         window.addEventListener("resize", this.updatePredicate);
-      }
-    
-      componentWillUnmount() {
+    }
+
+    componentWillUnmount() {
         window.removeEventListener("resize", this.updatePredicate);
-      }
-    
-      updatePredicate() {
+    }
+
+    updatePredicate() {
         this.setState({ isMobile: window.innerWidth < 700 });
-      }
+    }
+
+    onClick(e) {
+        var selected =  document.querySelectorAll("." + Style.active + "")
+        Array.from(selected).map(e => {
+            e.classList.remove(Style.active)
+        })
+        e.currentTarget.classList.add(Style.active)
+        this.props.categoryClickRequest(e.currentTarget.dataset.id);
+        this.props.openMenuRequest()
+    }
 
     render() {
-        const {categories, mobileMenuOpened} = this.props
+        const { categories, mobileMenuOpened,  } = this.props
+        let mobile = this.state.isMobile
+        let posed = mobile && mobileMenuOpened
+        if (!mobile)
+            posed = true
         return (
             <React.Fragment>
-                <StyledMenu pose={!(this.state.isMobile && !mobileMenuOpened) ? 'open' : 'closed'}>
+                <StyledMenu pose={posed ? 'open' : 'closed'}>
                     <List>
-                        <a key="View all">
-                            <li className={Style.active + " " + Style.listItem} >View All</li>
+                        <a className={Style.active} onClick={this.onClick} data-id="View All" key="View all">
+                            <li className={Style.listItem} >View All</li>
                         </a>
                         {
                             categories.map((e, idx) => (
-                                <a key={e}>
+                                <a onClick={this.onClick} data-id={e} key={e}>
                                     <li className={Style.listItem} key={e}>{e}</li>
                                 </a>
                             ))

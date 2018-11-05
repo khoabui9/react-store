@@ -7,9 +7,10 @@ export const openMenuRequest = () => {
     };
 };
 
-export const categoryClick = () => {
+export const categoryClickRequest = (category) => {
     return {
-        type: MenuActionTypes.CATEGORY_CLICK,
+        type: MenuActionTypes.CATEGORY_CLICK_REQUEST,
+        category
     };
 };
 

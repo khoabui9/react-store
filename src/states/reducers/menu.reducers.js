@@ -22,7 +22,8 @@ export default function Menu(state = initialState, action) {
             };
         case MenuActionTypes.CATEGORY_CLICK:
             return { 
-                ...state
+                ...state,
+                selectedCategory: action.category,
             };
         default:
             return state

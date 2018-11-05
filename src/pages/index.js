@@ -19,9 +19,15 @@ class Main extends Component {
         <Header openMenuRequest={this.props.openMenuRequest}></Header>
         <Menu
           categories={this.props.categories}
-          mobileMenuOpened={this.props.mobileMenuOpened}>
+          openMenuRequest={this.props.openMenuRequest}
+          mobileMenuOpened={this.props.mobileMenuOpened}
+          categoryClickRequest={this.props.categoryClickRequest}
+          selectedCategory={this.props.selectedCategory}>
         </Menu>
-        <ProductList products={this.props.products}></ProductList>
+        <ProductList
+          products={this.props.products}
+          selectedCategory={this.props.selectedCategory}>
+        </ProductList>
       </React.Fragment>
     )
   }
@@ -31,7 +37,8 @@ const mapStateToProps = state => {
   return {
     products: state.Products.products,
     categories: state.Products.categories,
-    mobileMenuOpened: state.Menu.mobileMenuOpened
+    mobileMenuOpened: state.Menu.mobileMenuOpened,
+    selectedCategory: state.Menu.selectedCategory
   };
 };
 
@@ -40,6 +47,7 @@ const mapDispatchToProps = dispatch => {
     initProductRequest: () => dispatch(ProductAction.initProductRequest()),
     initCollectionRequest: () => dispatch(ProductAction.initCollectionRequest()),
     openMenuRequest: () => dispatch(MenuAction.openMenuRequest()),
+    categoryClickRequest: (category) => dispatch(MenuAction.categoryClickRequest(category)),
   };
 };
 

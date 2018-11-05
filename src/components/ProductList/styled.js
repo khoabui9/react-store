@@ -18,6 +18,7 @@ export const SuperText = styled.h1`
     font-weight: 600;
     font-size: calc(20px + 40 * (100vw - 320px) / 1120);
     line-height: 2.5rem;
+    color: orangered;
 `;
 
 export const SmallerText = styled(SuperText)`
