@@ -29,18 +29,18 @@ export function* getCollectionWatcher() {
 
 function* getCollection() {
     var products = db.collection("Category")
-    var data = yield call(function() {
-      return new Promise(function(resolve, reject) {
-        products.get().then(function(querySnapshot) {
-            let data = []
-            querySnapshot.forEach((doc) => {
-                data = [...data, doc.id]
-            });
-            resolve(data)
+    var data = yield call(function () {
+        return new Promise(function (resolve, reject) {
+            products.get().then(function (querySnapshot) {
+                let data = []
+                querySnapshot.forEach((doc) => {
+                    data = [...data, doc.id]
+                });
+                resolve(data)
+            })
         })
-      })
     })
-    yield put({type: ProductActionTypes.SET_CATEGORY, data})
+    yield put({ type: ProductActionTypes.SET_CATEGORY, data })
 }
 
 export function* getAllProducts() {
@@ -49,21 +49,45 @@ export function* getAllProducts() {
 
 function* init() {
     var products = db.collection("Products")
-    var data = yield call(function() {
-      return new Promise(function(resolve, reject) {
-        products.get().then(function(querySnapshot) {
-            let data = []
-            querySnapshot.forEach((doc) => {
+    var data = yield call(function () {
+        return new Promise(function (resolve, reject) {
+            products.get().then(function (querySnapshot) {
+                let data = []
+                querySnapshot.forEach((doc) => {
+                    let returndoc = doc.data();
+                    returndoc.id = doc.id;
+                    data = [...data, returndoc]
+                });
+                resolve(data)
+            })
+        })
+    })
+    yield put({ type: ProductActionTypes.SET_PRODUCTS, data })
+}
+
+export function* getSelectedProductWatcher() {
+    yield takeLatest(ProductActionTypes.GET_SELECTED_PRODUCT_REQUEST, getSelectedProduct);
+}
+
+function* getSelectedProduct(action) {
+    console.log(action.id)
+    let id = action.id
+    var product = db.collection("Products").doc(id)
+    var data = yield call(function () {
+        return new Promise(function (resolve, reject) {
+            product.get().then(function (doc) {
+                let data;
                 let returndoc = doc.data();
                 returndoc.id = doc.id;
-                data = [...data, returndoc]
-            });
-            resolve(data)
+                data = returndoc
+                resolve(data)
+            })
         })
-      })
     })
-    yield put({type: ProductActionTypes.SET_PRODUCTS, data})
+    console.log(data)
+    yield put({ type: ProductActionTypes.SET_SELECTED_PRODUCT_BY_ID, data })
 }
+
 
 export function* productClickWatcher() {
     yield takeLatest(ProductActionTypes.PRODUCT_CLICK_REQUEST, productClick);
@@ -72,5 +96,5 @@ export function* productClickWatcher() {
 function* productClick(action) {
     let product = action.product
     localStorage.setItem("selectedProduct", product);
-    yield put({type: ProductActionTypes.SET_SELECTED_PRODUCT, product})
+    yield put({ type: ProductActionTypes.SET_SELECTED_PRODUCT, product })
 }

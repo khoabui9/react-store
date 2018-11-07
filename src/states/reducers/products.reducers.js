@@ -32,6 +32,12 @@ export default function Products(state = initialState, action) {
                 ...state,
                 selectedProduct: action.product
             }
+        case ProductActionTypes.SET_SELECTED_PRODUCT_BY_ID: 
+            console.log(action.data)
+            return {
+                ...state,
+                selectedProduct: action.data
+            }
         case ProductActionTypes.PRODUCT_CLICK: 
             return {
                 ...state,

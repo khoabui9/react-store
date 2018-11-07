@@ -21,7 +21,6 @@ export const ImageSection = styled.section`
 
     @media (max-width: 700px) {
         width: 100vw;
-        height: 80%;
     }
 `;
 
@@ -46,10 +45,6 @@ export const InfoSection = styled.section`
 export const ImageContainer = styled.div`
     width: 100%;
     padding: 5%;
-
-     @media (max-width: 700px) {
-       height: 80%;
-    }
 `;
 
 export const Image = styled.img`

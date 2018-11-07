@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
+import * as ProductAction from '../../states/actions/products.action';
 import {
   Container,
   ImageSection,
@@ -12,7 +13,11 @@ import {
   PriceContainer,
 } from "./styled"
 
+
 class ProductPage extends Component {
+  componentWillMount() {
+    this.props.getSelectedProduct(this.props.match.params.id)
+  }
 
   render() {
     const { selectedProduct } = this.props
@@ -75,7 +80,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    getSelectedProduct: (id) => dispatch(ProductAction.getSelectedProduct(id)),
   };
 };
 

@@ -28,3 +28,10 @@ export const setSelectedProduct = (product) => {
         product
     };
 };
+
+export const getSelectedProduct = (id) => {
+    return {
+        type: ProductActionTypes.GET_SELECTED_PRODUCT_REQUEST,
+        id
+    };
+};

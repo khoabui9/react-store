@@ -7,8 +7,10 @@ const Content = () => {
   return (
       <Switch>
         <Route exact path="/" component={ProductList} />
-        <Route path="/product" component={ProductPage} />
+        <Route path="/product/:id/:title" component={ProductPage} />
       </Switch>
   )
 }
+
+
 export default Content
