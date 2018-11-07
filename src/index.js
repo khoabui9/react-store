@@ -9,7 +9,10 @@ import createSagaMiddleware from "redux-saga";
 import { Provider } from "react-redux";
 import rootSaga from './states/sagas/rootSaga';
 import rootReducer from './states/reducers/rootReducer';
-
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,9 +23,10 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
+
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+            <App />
     </Provider>,
     document.getElementById('root')
 );

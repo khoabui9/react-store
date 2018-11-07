@@ -3,7 +3,8 @@ import * as ProductActionTypes from '../actiontypes/products.actiontypes';
 const initialState = {
     products: [],
     categories: [],
-    selectedProduct: null,
+    selectedProduct: {},
+    productClicked:false
 }
 
 /**
@@ -26,9 +27,15 @@ export default function Products(state = initialState, action) {
                 categories: action.data
             }
         case ProductActionTypes.SET_SELECTED_PRODUCT: 
+            console.log(action.product)
             return {
                 ...state,
-                selectedProduct: action.selected
+                selectedProduct: action.product
+            }
+        case ProductActionTypes.PRODUCT_CLICK: 
+            return {
+                ...state,
+                productClicked: !productClicked
             }
         default:
             return state

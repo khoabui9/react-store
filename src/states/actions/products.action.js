@@ -13,10 +13,18 @@ export const initCollectionRequest = () => {
     };
 };
 
+export const productClickRequest = (product) => {
+    console.log(product)
+    return {
+        type: ProductActionTypes.PRODUCT_CLICK_REQUEST,
+        product
+    };
+};
 
-export const setSelectedProduct = (selected) => {
+
+export const setSelectedProduct = (product) => {
     return {
         type: ProductActionTypes.SET_SELECTED_PRODUCT,
-        selected
+        product
     };
 };

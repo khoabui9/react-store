@@ -54,11 +54,23 @@ function* init() {
         products.get().then(function(querySnapshot) {
             let data = []
             querySnapshot.forEach((doc) => {
-                data = [...data, doc.data()]
+                let returndoc = doc.data();
+                returndoc.id = doc.id;
+                data = [...data, returndoc]
             });
             resolve(data)
         })
       })
     })
     yield put({type: ProductActionTypes.SET_PRODUCTS, data})
+}
+
+export function* productClickWatcher() {
+    yield takeLatest(ProductActionTypes.PRODUCT_CLICK_REQUEST, productClick);
+}
+
+function* productClick(action) {
+    let product = action.product
+    localStorage.setItem("selectedProduct", product);
+    yield put({type: ProductActionTypes.SET_SELECTED_PRODUCT, product})
 }

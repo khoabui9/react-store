@@ -4,6 +4,8 @@ import ProductItem from "../ProductItem/ProductItem";
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as ProductAction from '../../states/actions/products.action';
+import { connect } from 'react-redux';
 
 class ProductList extends Component {
     render() {
@@ -19,10 +21,13 @@ class ProductList extends Component {
                         {
                             caterogyProduct.map((e, idx) => (
                                 <ProductItem
+                                    product={e}
+                                    id = {e.id}
                                     title={e.title}
                                     image={e.image}
                                     price={e.price}
                                     key={idx}
+                                    productClickRequest={this.props.productClickRequest}
                                 >
                                 </ProductItem>
                             ))
@@ -39,4 +44,18 @@ ProductList.propTypes = {
     selectedCategory: PropTypes.string,
 };
 
-export default ProductList;
+const mapStateToProps = state => {
+    return {
+      products: state.Products.products,
+      selectedCategory: state.Menu.selectedCategory
+    };
+  };
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+        productClickRequest: (product) => dispatch(ProductAction.productClickRequest(product)),
+    };
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
+  

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import * as ProductAction from '../states/actions/products.action';
 import * as MenuAction from '../states/actions/menu.actions';
 import { connect } from 'react-redux';
 import Header from "../components/Header/header"
 import Menu from "../components/Menu/Menu"
-import ProductList from "../components/ProductList/ProductList"
-import { Redirect } from "react-router-dom";
+import Content from './Content'
 
 class Main extends Component {
   componentWillMount() {
@@ -17,17 +17,18 @@ class Main extends Component {
     return (
       <React.Fragment>
         <Header openMenuRequest={this.props.openMenuRequest}></Header>
-        <Menu
-          categories={this.props.categories}
-          openMenuRequest={this.props.openMenuRequest}
-          mobileMenuOpened={this.props.mobileMenuOpened}
-          categoryClickRequest={this.props.categoryClickRequest}
-          selectedCategory={this.props.selectedCategory}>
-        </Menu>
-        <ProductList
-          products={this.props.products}
-          selectedCategory={this.props.selectedCategory}>
-        </ProductList>
+        <BrowserRouter>
+          <React.Fragment>
+            <Menu
+              categories={this.props.categories}
+              openMenuRequest={this.props.openMenuRequest}
+              mobileMenuOpened={this.props.mobileMenuOpened}
+              categoryClickRequest={this.props.categoryClickRequest}
+              selectedCategory={this.props.selectedCategory}>
+            </Menu>
+            <Content></Content>
+          </React.Fragment>
+        </BrowserRouter>
       </React.Fragment>
     )
   }

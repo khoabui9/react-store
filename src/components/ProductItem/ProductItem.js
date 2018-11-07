@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import { Item, ImageContainer, Image,TitleContainer ,PriceContainer } from "./styled"
 import { BrowserRouter as Router } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class ProductItem extends Component {
+    constructor(props) {
+        super(props);
+
+        //this.onClick = this.onClick.bind(this);
+    }
+
+    // onClick(e) {
+    //     this.props.productClickRequest(e);
+    // }
+
     render() {
-        const { image, title, price } = this.props
-        return (
-            <Item>
+        const { id,product,image, title, price } = this.props
+        return (   
+            <Item onClick={() => this.props.productClickRequest(product)}> 
+                <NavLink to={"/product/" + id + "/" + title}>
                 <ImageContainer>
                     <Image src={image}></Image>
                 </ImageContainer>
@@ -19,6 +31,7 @@ class ProductItem extends Component {
                         <span>{price} EUR</span>
                     </PriceContainer>
                 </div>
+                </NavLink>
             </Item>
         );
     }

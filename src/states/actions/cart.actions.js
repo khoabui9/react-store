@@ -1,16 +1,17 @@
 import * as CartActionTypes from '../actiontypes/cart.actiontypes';
 
 
-export const addToCart = (param) => {
+export const addToCart = (product) => {
     return {
         type: CartActionTypes.ADD_TO_CART,
-        payload: param
+        product
     };
 };
 
-export const removeFromCart = () => {
+export const removeFromCart = (product) => {
     return {
         type: CartActionTypes.REMOVE_FROM_CART,
+        product
     };
 };
 

@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import routes from "./components/Routes/Routes"
 import { BrowserRouter as Router } from 'react-router-dom';
+import Main from "./pages/index"
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,9 @@ class App extends Component {
 
   render() {
     return (
-      routes
+      <Router>
+        <Main/>
+      </Router>
     );
   }
 }

@@ -17,12 +17,12 @@ export default function Cart(state = initialState, action) {
         case CartActionTypes.ADD_TO_CART:
             return {
                 ...state,
-                cartProducts: [...state.cartProducts, action.payload]
+                cartProducts: [...state.cartProducts, action.product]
             }
         case CartActionTypes.REMOVE_FROM_CART:
             return {
                 ...state,
-                cartProducts: [...state.cartProducts.filter(item => item.id !== action.payload.id)]
+                cartProducts: [...state.cartProducts.filter(item => item.id !== action.product.id)]
             }
         case CartActionTypes.DELETE_ALL_CART:
             return {

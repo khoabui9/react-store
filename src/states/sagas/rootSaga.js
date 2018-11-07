@@ -2,7 +2,8 @@ import { put, takeEvery, all } from 'redux-saga/effects';
 
 import {
     getAllProducts,
-    getCollectionWatcher
+    getCollectionWatcher,
+    productClickWatcher
 } from "./products.sagas"
 
 import {
@@ -15,6 +16,7 @@ export default function* rootSaga() {
         getAllProducts(),
         getCollectionWatcher(),
         menuMobileWatcher(),
-        categoryClickWatcher()
+        categoryClickWatcher(),
+        productClickWatcher()
       ])
  }
