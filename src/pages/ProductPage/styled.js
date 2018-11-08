@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MobileInfoSection } from "./animation"
 
 export const Container = styled.div`
     width: 75vw;
@@ -25,7 +26,7 @@ export const ImageSection = styled.section`
 `;
 
 
-export const InfoSection = styled.section`
+export const InfoSection = styled(MobileInfoSection)`
     width: 40%;
     height: 100%;
     position: absolute;
@@ -35,10 +36,9 @@ export const InfoSection = styled.section`
 
     @media (max-width: 700px) {
         width: 100vw;
-        height: 20%;
+        margin-top: 100px;
         bottom: 0;
         position: fixed;
-        margin-top: 10vh;
     }
 `;
 
@@ -64,10 +64,36 @@ export const PriceContainer = styled.div`
     height: 10%;
 `;
 
-export const addToCartBtn = styled.a`
-    height: 10%;
+export const AddToCartBtnContainer = styled.a`
 `;
 
+export const AddToCartBtn = styled.div`
+    width: 100%;
+    height: 45px;
+    background-color:black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .6rem;
+`;
+
+export const AddToCartText = styled.p`
+    height: 50%;
+    color: white;
+    margin: 0;
+`;
+
+export const OpenDeBanOi = styled.div`
+    margin: .4rem;
+    height: 5px;
+    width: 20%;
+    background-color: grey;
+    transform: translate(190%, -20px);
+    
+    @media (min-width: 700px) {
+        display: none;
+    }
+`;
 
 
 
