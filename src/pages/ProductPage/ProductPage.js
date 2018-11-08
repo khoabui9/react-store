@@ -53,8 +53,6 @@ class ProductPage extends Component {
     this.setState({ infoOpened: !this.state.infoOpened });
   }
 
-
-
   render() {
     const { selectedProduct } = this.props
     let isMobile = this.state.isMobile;
@@ -80,9 +78,9 @@ class ProductPage extends Component {
           </ImageSection>
           <InfoSection pose={
             isMobile ?
-            (this.state.infoOpened) ? 'open' : 'closed'
-            :
-            'default'
+              (this.state.infoOpened) ? 'open' : 'closed'
+              :
+              'default'
           }
           >
             <OpenDeBanOi></OpenDeBanOi>
@@ -95,16 +93,16 @@ class ProductPage extends Component {
                   <p className={Style.m0}>{selectedProduct.price} EUR</p>
                 </PriceContainer>
               </div>
+              {
+                isMobile ? (
+                  <AddToCartBtnContainer>
+                    <AddToCartBtn>
+                      <AddToCartText>ADD</AddToCartText>
+                    </AddToCartBtn>
+                  </AddToCartBtnContainer>
+                ) : (null)
+              }
               <PriceContainer onClick={this.onClick}>
-                {
-                  isMobile ? (
-                    <AddToCartBtnContainer>
-                      <AddToCartBtn>
-                        <AddToCartText>ADD</AddToCartText>
-                      </AddToCartBtn>
-                    </AddToCartBtnContainer>
-                  ) : (null)
-                }
                 <div className="product-info-wrapper _product-info">
                   <p className="product-color">
                     <span className="_colorName">Color / Color</span>
