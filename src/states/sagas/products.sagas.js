@@ -70,7 +70,6 @@ export function* getSelectedProductWatcher() {
 }
 
 function* getSelectedProduct(action) {
-    console.log(action.id)
     let id = action.id
     var product = db.collection("Products").doc(id)
     var data = yield call(function () {
@@ -84,7 +83,6 @@ function* getSelectedProduct(action) {
             })
         })
     })
-    console.log(data)
     yield put({ type: ProductActionTypes.SET_SELECTED_PRODUCT_BY_ID, data })
 }
 

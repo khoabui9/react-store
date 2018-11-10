@@ -70,7 +70,7 @@ export const AddToCartBtnContainer = styled.a`
 export const AddToCartBtn = styled.div`
     width: 100%;
     height: 45px;
-    background-color:black;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +79,8 @@ export const AddToCartBtn = styled.div`
 
 export const AddToCartText = styled.p`
     height: 50%;
-    color: white;
+    font-weight: 600;
+    color:white;
     margin: 0;
 `;
 

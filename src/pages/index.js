@@ -6,8 +6,16 @@ import { connect } from 'react-redux';
 import Header from "../components/Header/header"
 import Menu from "../components/Menu/Menu"
 import Content from './Content'
+import JSON from 'circular-json'
 
 class Main extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      cartCount: 0
+    }
+  }
+
   componentWillMount() {
     this.props.initProductRequest();
     this.props.initCollectionRequest();
@@ -16,7 +24,10 @@ class Main extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header openMenuRequest={this.props.openMenuRequest}></Header>
+        <Header
+          openMenuRequest={this.props.openMenuRequest}
+          cartCount={this.state.cartCount}>
+        </Header>
         <BrowserRouter>
           <React.Fragment>
             <Menu
@@ -39,7 +50,8 @@ const mapStateToProps = state => {
     products: state.Products.products,
     categories: state.Products.categories,
     mobileMenuOpened: state.Menu.mobileMenuOpened,
-    selectedCategory: state.Menu.selectedCategory
+    selectedCategory: state.Menu.selectedCategory,
+    cartProducts: state.Cart.cartProducts
   };
 };
 

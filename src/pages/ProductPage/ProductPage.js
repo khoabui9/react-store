@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import * as ProductAction from '../../states/actions/products.action';
+import * as CartAction from '../../states/actions/cart.actions';
 import Style from './productPage.less'
 import {
   Container,
@@ -28,7 +29,8 @@ class ProductPage extends Component {
     };
 
     this.updatePredicate = this.updatePredicate.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.onInfoClick = this.onInfoClick.bind(this);
+    this.onBtnClick = this.onBtnClick.bind(this);
   }
 
   componentDidMount() {
@@ -49,12 +51,16 @@ class ProductPage extends Component {
     this.setState({ isMobile: window.innerWidth < 700 });
   }
 
-  onClick() {
+  onInfoClick() {
     this.setState({ infoOpened: !this.state.infoOpened });
   }
 
+  onBtnClick() {
+    this.props.addToCartRequest(this.props.selectedProduct)
+  }
+
   render() {
-    const { selectedProduct } = this.props
+    const { selectedProduct, addToCartRequest } = this.props
     let isMobile = this.state.isMobile;
     return (
       <React.Fragment>
@@ -85,7 +91,7 @@ class ProductPage extends Component {
           >
             <OpenDeBanOi></OpenDeBanOi>
             <InfoContainer>
-              <div onClick={this.onClick}>
+              <div onClick={this.onInfoClick}>
                 <TitleContainer>
                   <h2 className={Style.m0}>{selectedProduct.title}</h2>
                 </TitleContainer>
@@ -95,14 +101,14 @@ class ProductPage extends Component {
               </div>
               {
                 isMobile ? (
-                  <AddToCartBtnContainer>
+                  <AddToCartBtnContainer onClick={this.onBtnClick}>
                     <AddToCartBtn>
-                      <AddToCartText>ADD</AddToCartText>
+                      <AddToCartText>ADD TO CART</AddToCartText>
                     </AddToCartBtn>
                   </AddToCartBtnContainer>
                 ) : (null)
               }
-              <PriceContainer onClick={this.onClick}>
+              <PriceContainer onClick={this.onInfoClick}>
                 <div className="product-info-wrapper _product-info">
                   <p className="product-color">
                     <span className="_colorName">Color / Color</span>
@@ -119,9 +125,9 @@ class ProductPage extends Component {
               </PriceContainer>
               {
                 !isMobile ? (
-                  <AddToCartBtnContainer>
+                  <AddToCartBtnContainer onClick={() => addToCartRequest(selectedProduct)}>
                     <AddToCartBtn>
-                      <AddToCartText>ADD</AddToCartText>
+                      <AddToCartText>ADD TO CART</AddToCartText>
                     </AddToCartBtn>
                   </AddToCartBtnContainer>
                 ) : (null)
@@ -136,13 +142,15 @@ class ProductPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    selectedProduct: state.Products.selectedProduct
+    selectedProduct: state.Products.selectedProduct,
+    cartProducts: state.Cart.cartProducts
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getSelectedProduct: (id) => dispatch(ProductAction.getSelectedProduct(id)),
+    addToCartRequest: (product) => dispatch(CartAction.addToCartRequest(product)),
   };
 };
 

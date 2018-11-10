@@ -1,23 +1,29 @@
 import * as CartActionTypes from '../actiontypes/cart.actiontypes';
 
 
-export const addToCart = (product) => {
+export const initCartRequest = () => {
     return {
-        type: CartActionTypes.ADD_TO_CART,
+        type: CartActionTypes.INIT_CART_REQUEST,
+    };
+};
+
+export const addToCartRequest = (product) => {
+    return {
+        type: CartActionTypes.ADD_TO_CART_REQUEST,
         product
     };
 };
 
-export const removeFromCart = (product) => {
+export const removeFromCartRequest = (product) => {
     return {
-        type: CartActionTypes.REMOVE_FROM_CART,
+        type: CartActionTypes.REMOVE_FROM_CART_REQUEST,
         product
     };
 };
 
-export const deleteAll = () => {
+export const deleteAllRequest = () => {
     return {
-        type: CartActionTypes.DELETE_ALL_CART,
+        type: CartActionTypes.DELETE_ALL_CART_REQUEST,
     };
 };
 

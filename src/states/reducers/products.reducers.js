@@ -4,7 +4,7 @@ const initialState = {
     products: [],
     categories: [],
     selectedProduct: {},
-    productClicked:false
+    productClicked:false,
 }
 
 /**
@@ -27,7 +27,6 @@ export default function Products(state = initialState, action) {
                 categories: action.data
             }
         case ProductActionTypes.SET_SELECTED_PRODUCT: 
-            console.log(action.product)
             return {
                 ...state,
                 selectedProduct: action.product

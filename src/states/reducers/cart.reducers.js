@@ -2,7 +2,7 @@ import * as CartActionTypes from '../actiontypes/cart.actiontypes';
 
 const initialState = {
     cartProducts: [],
-    cartOpened: false
+    cartOpened: false,
 }
 
 /**

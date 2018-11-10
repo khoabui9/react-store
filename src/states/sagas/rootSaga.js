@@ -12,6 +12,13 @@ import {
     categoryClickWatcher
 } from "./menu.sagas"
 
+import {
+    addToCartWatcher,
+    removeToCartWatcher,
+    deleteAllToCartWatcher
+} from "./cart.sagas"
+
+
 export default function* rootSaga() {
     yield all([
         getAllProducts(),
@@ -19,6 +26,9 @@ export default function* rootSaga() {
         menuMobileWatcher(),
         categoryClickWatcher(),
         productClickWatcher(),
-        getSelectedProductWatcher()
-      ])
- }
+        getSelectedProductWatcher(),
+        addToCartWatcher(),
+        removeToCartWatcher(),
+        deleteAllToCartWatcher()
+    ])
+}
