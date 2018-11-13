@@ -11,11 +11,22 @@ export function* addToCartWatcher() {
 }
 
 function* addToCart(action) {
-    let product = action.product
+    var product = action.product
+    product.amount = 1;
+    let check = false;
     let cartProducts = JSON.parse(localStorage.getItem("cartProducts"))
-    if (cartProducts === null)
-        cartProducts = []
-    cartProducts = [...cartProducts, product]
+    cartProducts = cartProducts ? cartProducts : []
+    if (cartProducts)
+        cartProducts.map((item) => {
+            if (item.id === product.id) {
+                item.amount += product.amount
+                check = true
+            }
+        })
+    if (!check) {
+        cartProducts = [...cartProducts, product]
+        check = false;
+    }
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts))
     localStorage.setItem("cartCount", cartProducts.length)
     yield put({type: CartActionTypes.ADD_TO_CART, product})

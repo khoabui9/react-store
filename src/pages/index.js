@@ -24,12 +24,12 @@ class Main extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header
-          openMenuRequest={this.props.openMenuRequest}
-          cartCount={this.state.cartCount}>
-        </Header>
         <BrowserRouter>
           <React.Fragment>
+            <Header
+              openMenuRequest={this.props.openMenuRequest}
+              cartCount={this.state.cartCount}>
+            </Header>
             <Menu
               categories={this.props.categories}
               openMenuRequest={this.props.openMenuRequest}

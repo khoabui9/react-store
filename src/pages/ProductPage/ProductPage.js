@@ -63,79 +63,77 @@ class ProductPage extends Component {
     const { selectedProduct, addToCartRequest } = this.props
     let isMobile = this.state.isMobile;
     return (
-      <React.Fragment>
-        <Container>
-          <ImageSection>
-            <ImageContainer>
-              <Image src={selectedProduct.image}></Image>
-            </ImageContainer>
-            <ImageContainer>
-              <Image src={selectedProduct.image}></Image>
-            </ImageContainer>
-            <ImageContainer>
-              <Image src={selectedProduct.image}></Image>
-            </ImageContainer>
-            <ImageContainer>
-              <Image src={selectedProduct.image}></Image>
-            </ImageContainer>
-            <ImageContainer>
-              <Image src={selectedProduct.image}></Image>
-            </ImageContainer>
-          </ImageSection>
-          <InfoSection pose={
-            isMobile ?
-              (this.state.infoOpened) ? 'open' : 'closed'
-              :
-              'default'
-          }
-          >
-            <OpenDeBanOi></OpenDeBanOi>
-            <InfoContainer>
-              <div onClick={this.onInfoClick}>
-                <TitleContainer>
-                  <h2 className={Style.m0}>{selectedProduct.title}</h2>
-                </TitleContainer>
-                <PriceContainer>
-                  <p className={Style.m0}>{selectedProduct.price} EUR</p>
-                </PriceContainer>
-              </div>
-              {
-                isMobile ? (
-                  <AddToCartBtnContainer onClick={this.onBtnClick}>
-                    <AddToCartBtn>
-                      <AddToCartText>ADD TO CART</AddToCartText>
-                    </AddToCartBtn>
-                  </AddToCartBtnContainer>
-                ) : (null)
-              }
-              <PriceContainer onClick={this.onInfoClick}>
-                <div className="product-info-wrapper _product-info">
-                  <p className="product-color">
-                    <span className="_colorName">Color / Color</span>
-                    <span data-qa-qualifier="product-reference"> 0387/181</span>
-                  </p>
-                  <div id="description" className="_redraw-for-color">
-                    <p className="description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                  <br />
-                      <br />SIZE: size cm
-                  </p>
-                  </div>
-                </div>
+      <Container>
+        <ImageSection>
+          <ImageContainer>
+            <Image src={selectedProduct.image}></Image>
+          </ImageContainer>
+          <ImageContainer>
+            <Image src={selectedProduct.image}></Image>
+          </ImageContainer>
+          <ImageContainer>
+            <Image src={selectedProduct.image}></Image>
+          </ImageContainer>
+          <ImageContainer>
+            <Image src={selectedProduct.image}></Image>
+          </ImageContainer>
+          <ImageContainer>
+            <Image src={selectedProduct.image}></Image>
+          </ImageContainer>
+        </ImageSection>
+        <InfoSection pose={
+          isMobile ?
+            (this.state.infoOpened) ? 'open' : 'closed'
+            :
+            'default'
+        }
+        >
+          <OpenDeBanOi></OpenDeBanOi>
+          <InfoContainer>
+            <div onClick={this.onInfoClick}>
+              <TitleContainer>
+                <h2 className={Style.m0}>{selectedProduct.title}</h2>
+              </TitleContainer>
+              <PriceContainer>
+                <p className={Style.m0}>{selectedProduct.price} EUR</p>
               </PriceContainer>
-              {
-                !isMobile ? (
-                  <AddToCartBtnContainer onClick={() => addToCartRequest(selectedProduct)}>
-                    <AddToCartBtn>
-                      <AddToCartText>ADD TO CART</AddToCartText>
-                    </AddToCartBtn>
-                  </AddToCartBtnContainer>
-                ) : (null)
-              }
-            </InfoContainer>
-          </InfoSection>
-        </Container>
-      </React.Fragment>
+            </div>
+            {
+              isMobile ? (
+                <AddToCartBtnContainer onClick={this.onBtnClick}>
+                  <AddToCartBtn>
+                    <AddToCartText>ADD TO CART</AddToCartText>
+                  </AddToCartBtn>
+                </AddToCartBtnContainer>
+              ) : (null)
+            }
+            <PriceContainer onClick={this.onInfoClick}>
+              <div className="product-info-wrapper _product-info">
+                <p className="product-color">
+                  <span className="_colorName">Color / Color</span>
+                  <span data-qa-qualifier="product-reference"> 0387/181</span>
+                </p>
+                <div id="description" className="_redraw-for-color">
+                  <p className="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                  <br />
+                    <br />SIZE: size cm
+                  </p>
+                </div>
+              </div>
+            </PriceContainer>
+            {
+              !isMobile ? (
+                <AddToCartBtnContainer onClick={() => addToCartRequest(selectedProduct)}>
+                  <AddToCartBtn>
+                    <AddToCartText>ADD TO CART</AddToCartText>
+                  </AddToCartBtn>
+                </AddToCartBtnContainer>
+              ) : (null)
+            }
+          </InfoContainer>
+        </InfoSection>
+      </Container>
     )
   }
 }

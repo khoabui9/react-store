@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
+import Cart from '../../components/Cart/Cart'
+import { CartContainerOuter } from './styled';
 
-class Cart extends Component {
+class CartPage extends Component {
   componentWillMount() {
     
   }
 
   render() {
+    let cartProducts = JSON.parse(localStorage.getItem("cartProducts"))
     return (
-      <React.Fragment>
-        
-      </React.Fragment>
+      <CartContainerOuter>
+        <Cart cartProducts={cartProducts}></Cart>
+      </CartContainerOuter>
     )
   }
 }
@@ -28,4 +31,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(CartPage);
