@@ -19,7 +19,6 @@ export function* categoryClickWatcher() {
 
 function* categoryClick(action) {
     let category = action.category
-    console.log(category)
     yield put({type: MenuActionTypes.CATEGORY_CLICK, category})
 }
 

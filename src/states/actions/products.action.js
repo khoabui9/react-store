@@ -14,7 +14,6 @@ export const initCollectionRequest = () => {
 };
 
 export const productClickRequest = (product) => {
-    console.log(product)
     return {
         type: ProductActionTypes.PRODUCT_CLICK_REQUEST,
         product

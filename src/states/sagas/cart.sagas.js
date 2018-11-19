@@ -33,12 +33,16 @@ function* addToCart(action) {
 }
 
 
-export function* removeToCartWatcher() {
-    yield takeLatest(CartActionTypes.REMOVE_FROM_CART_REQUEST, removeToCart);
+export function* removeFromCartWatcher() {
+    yield takeLatest(CartActionTypes.REMOVE_FROM_CART_REQUEST, removeFromCart);
 }
 
-function* removeToCart(action) {
+function* removeFromCart(action) {
     let product = action.product
+    let cartProducts = JSON.parse(localStorage.getItem("cartProducts"))
+    var arr = cartProducts.filter(item => item.id !== product.id)
+    localStorage.setItem("cartProducts", JSON.stringify(arr))
+    localStorage.setItem("cartCount", arr.length)
     yield put({type: CartActionTypes.REMOVE_FROM_CART, product})
 }
 

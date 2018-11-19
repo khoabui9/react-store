@@ -12,7 +12,7 @@ class CartItem extends Component {
     }
 
     render() {
-        let { item } = this.props
+        let { item, removeFromCartRequest } = this.props
         return (
             <React.Fragment>
                 <CartListItem>
@@ -36,7 +36,7 @@ class CartItem extends Component {
                             <PriceInfo className={Style.center}>
                                     {item.price}
                             </PriceInfo>
-                            <RemoveItem className={Style.center}>
+                            <RemoveItem className={Style.center} onClick={() => removeFromCartRequest(item)}>
                                 <RemoveItemBtn>x</RemoveItemBtn>
                             </RemoveItem>
                         </ItemInfoDiv>

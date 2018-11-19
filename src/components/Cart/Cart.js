@@ -9,7 +9,7 @@ import CartItem from './CartItem';
 
 class Cart extends Component {
     render() {
-        let { cartProducts } = this.props
+        let { cartProducts, removeFromCartRequest } = this.props
         return (
             <CartContainer>
                 {
@@ -17,7 +17,7 @@ class Cart extends Component {
                 <CartList>
                     {
                         cartProducts.map((item, idx) => (
-                            <CartItem item={item} key={idx}></CartItem>
+                            <CartItem removeFromCartRequest={removeFromCartRequest} item={item} key={idx}></CartItem>
                         ))
                     }
                 </CartList>
