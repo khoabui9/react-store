@@ -12,11 +12,18 @@ class CartPage extends Component {
 
   render() {
     let cartProducts = JSON.parse(localStorage.getItem("cartProducts"))
+    let cart;
+
+    if (cartProducts.length === 0)
+      cart = <p>Your basket is empty</p>
+    else
+      cart = <Cart cartProducts={cartProducts} removeFromCartRequest={this.props.removeFromCartRequest}></Cart>
     return (
       <CartContainerOuter>
         <Cart
           cartProducts={cartProducts}
-          removeFromCartRequest={this.props.removeFromCartRequest}>
+          removeFromCartRequest={this.props.removeFromCartRequest}
+          updateAmountRequest={this.props.updateAmountRequest}>
         </Cart>
       </CartContainerOuter>
     )
@@ -32,6 +39,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     removeFromCartRequest: (product) => dispatch(CartAction.removeFromCartRequest(product)),
+    updateAmountRequest: (param) => dispatch(CartAction.updateAmountRequest(param)),
   };
 };
 

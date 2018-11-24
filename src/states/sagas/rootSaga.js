@@ -15,7 +15,8 @@ import {
 import {
     addToCartWatcher,
     removeFromCartWatcher,
-    deleteAllToCartWatcher
+    deleteAllToCartWatcher,
+    updateAmountWatcher
 } from "./cart.sagas"
 
 
@@ -29,6 +30,7 @@ export default function* rootSaga() {
         getSelectedProductWatcher(),
         addToCartWatcher(),
         removeFromCartWatcher(),
-        deleteAllToCartWatcher()
+        deleteAllToCartWatcher(),
+        updateAmountWatcher(),
     ])
 }

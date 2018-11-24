@@ -27,8 +27,11 @@ function* addToCart(action) {
         cartProducts = [...cartProducts, product]
         check = false;
     }
+    let totalCartCount = cartProducts.reduce((total, e) => {
+        return total + e.amount
+    },0)
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts))
-    localStorage.setItem("cartCount", cartProducts.length)
+    localStorage.setItem("cartCount", totalCartCount)
     yield put({type: CartActionTypes.ADD_TO_CART, product})
 }
 
@@ -52,6 +55,32 @@ export function* deleteAllToCartWatcher() {
 
 function* deleteAll(action) {
     yield put({type: CartActionTypes.DELETE_ALL_CART})
+}
+
+export function* updateAmountWatcher() {
+    yield takeLatest(CartActionTypes.UPDATE_AMOUNT_REQUEST, updateAmount);
+}
+
+function* updateAmount(action) {
+    let product = action.payload.product
+    let increment = action.payload.increment
+    let cartProducts = JSON.parse(localStorage.getItem("cartProducts"))
+
+    cartProducts.map((item) => {
+        if (item.id === product.id) {
+            item.amount += increment
+            if (item.amount < 1) {
+                item.amount = 1
+            }
+        }
+    })
+
+    let totalCartCount = cartProducts.reduce((total, e) => {
+        return total + e.amount
+    },0)
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts))
+    localStorage.setItem("cartCount", totalCartCount)
+    yield put({type: CartActionTypes.UPDATE_AMOUNT, cartProducts})
 }
 
 

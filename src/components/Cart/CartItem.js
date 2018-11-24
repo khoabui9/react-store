@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { connect } from 'react-redux';
 import Style from './cart.less'
 import { CartListItem, ItemDiv, ItemImageDiv, ItemImage, ItemInfoDiv, MainInfo, UnitsInfo, PriceInfo, RemoveItem, RemoveItemBtn } from './styled'
 
@@ -12,7 +8,7 @@ class CartItem extends Component {
     }
 
     render() {
-        let { item, removeFromCartRequest } = this.props
+        let { item, removeFromCartRequest, updateAmountRequest, amount } = this.props
         return (
             <React.Fragment>
                 <CartListItem>
@@ -31,10 +27,14 @@ class CartItem extends Component {
                                 </div>
                             </MainInfo>
                             <UnitsInfo className={Style.center}>
-                                    {item.amount}
+                                {item.amount}
+                                <span className={Style.btnContainer}>
+                                    <button onClick={() => updateAmountRequest({product:item, increment: -1})} type="button" className={Style.button + " " +  Style.leftbtn} alt="Add another unit" title="Add another unit"></button>
+                                    <button onClick={() => updateAmountRequest({product:item, increment: 1})} type="button" className={Style.button + " " + Style.rightbtn} alt="Delete a unit" title="Delete a unit"></button>
+                                </span>
                             </UnitsInfo>
                             <PriceInfo className={Style.center}>
-                                    {item.price}
+                                {item.price} EUR
                             </PriceInfo>
                             <RemoveItem className={Style.center} onClick={() => removeFromCartRequest(item)}>
                                 <RemoveItemBtn>x</RemoveItemBtn>

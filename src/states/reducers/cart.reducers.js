@@ -29,6 +29,11 @@ export default function Cart(state = initialState, action) {
                 ...state,
                 cartProducts: []
             }
+        case CartActionTypes.UPDATE_AMOUNT:
+            return {
+                ...state,
+                cartProducts: action.cartProducts
+            }
         case CartActionTypes.OPEN_CART_LIST_DRAWER:
             return {
                 ...state,

@@ -27,6 +27,13 @@ export const deleteAllRequest = () => {
     };
 };
 
+export const updateAmountRequest = (param) => {
+    return {
+        type: CartActionTypes.UPDATE_AMOUNT_REQUEST,
+        payload: param
+    };
+};
+
 export const openCartListDrawer = () => {
     return {type: CartActionTypes.OPEN_CART_LIST_DRAWER}
 };
